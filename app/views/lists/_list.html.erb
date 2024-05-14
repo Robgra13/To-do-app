@@ -1,0 +1,29 @@
+<% if list.completed %>
+  <tr class="table-secondary" id="<%= dom_id list %>">
+    <td><%= link_to list.description, edit_list_path(list), class: "text-decoration-line-through text-dark" %></td>
+    <td>
+      <%= form_with(model: list) do |form| %>
+        <%= form.text_field :description, type: 'hidden' %>
+        <%= form.check_box :completed, :checked => false, :style => 'visibility: hidden'  %>
+        <%= form.submit "Uncross", class:"btn btn-outline-dark  btn-sm" %>
+      <% end %>
+    </td>
+    <td class="text-center">
+      <%= link_to "Delete", list, data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class:"btn btn-outline-danger btn-sm text-dark" %>
+    </td>
+  </tr>
+<% else %>
+  <tr class="table" id="<%= dom_id list %>">
+    <td><%=link_to list.description, edit_list_path(list), class: "text-decoration-none" %></td>
+    <td>
+      <%= form_with(model: list) do |form| %>
+        <%= form.text_field :description, type: 'hidden' %>
+        <%= form.check_box :completed, :checked => true, :style => 'visibility: hidden'  %>
+        <%= form.submit "Complete", class:"btn btn-success btn-sm text-dark" %>
+      <% end %>
+    </td>
+    <td class="text-center">
+      <%= link_to "Delete", list, data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class:"btn btn-outline-danger btn-sm text-dark" %>
+    </td>
+  </tr>
+<% end %>

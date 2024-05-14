@@ -1,0 +1,17 @@
+<table class="table table-bordered">
+  <thead>
+    <tr>
+    </tr>
+  </thead>
+  <tbody id="lists">
+    <% @lists.each do |list| %>
+      <%= render list %>
+    <% end %>
+  </tbody>
+</table>
+
+  <%= link_to "Delete Completed", home_delete_completed_path, data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} , class: "text-decoration-uderline text-dark" %> |
+  <%= link_to "Delete All tasks", home_delete_all_path, data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} , class: "text-decoration-uderline text-dark" %> 
+
+
+

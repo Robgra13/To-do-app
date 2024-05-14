@@ -1,0 +1,15 @@
+<nav class="navbar navbar-expand-lg bg-body-secondary" data-bs-theme="dark">
+  <div class="container-fluid">
+    <%= link_to 'To-do list', lists_path, class:"navbar-brand"%>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="d-flex justify-content-center">
+      <% if request.path == root_path || request.path == lists_path %>
+        <%= render 'form2', list: @list%> 
+        <% end %>
+      </div>
+    </div>
+  </div>
+</nav>

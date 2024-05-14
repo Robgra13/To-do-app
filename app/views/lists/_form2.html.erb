@@ -1,0 +1,23 @@
+<%= form_with(model: list) do |form| %>
+  <% if list.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(list.errors.count, "error") %> prohibited this list from being saved:</h2>
+
+      <ul>
+        <% list.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <div class="form-group d-flex justify-content-between">
+        <div>
+            <%= form.text_field :description, placeholder:"new to-do", class:"form-control me-2" %>
+        </div>
+        <div class="d-flex ms-3">
+            <%= form.submit "Add to-do", class:"btn btn-outline-success" %>
+        </div>
+    </div>
+<% end %>
+
